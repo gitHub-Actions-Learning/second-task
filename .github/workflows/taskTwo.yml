@@ -1,0 +1,21 @@
+name: taskTwo
+on:
+  push:
+    branches: [ main ]
+    
+env:
+  ARTIFACT-NAME: myArtifact
+  
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: checkout code 
+        uses: actions/checkout@v2
+
+      - name: upload the artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.ARTIFACT-NAME }}
+          path: .
